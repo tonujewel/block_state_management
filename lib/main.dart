@@ -1,3 +1,4 @@
+import 'package:block_state_management/counter_block.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -28,7 +29,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  final counterBlock = CounterBlock();
 
   @override
   Widget build(BuildContext context) {
@@ -40,13 +41,27 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            ElevatedButton(onPressed: () {}, child: Text("increment")),
-            ElevatedButton(onPressed: () {}, child: Text("decrement")),
-            ElevatedButton(onPressed: () {}, child: Text("reset")),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
+            ElevatedButton(
+                onPressed: () =>
+                    counterBlock.eventSink.add(CounterAction.Increment),
+                child: Text("increment")),
+            ElevatedButton(
+                onPressed: () =>
+                    counterBlock.eventSink.add(CounterAction.Dcrement),
+                child: Text("decrement")),
+            ElevatedButton(
+                onPressed: () =>
+                    counterBlock.eventSink.add(CounterAction.Reset),
+                child: Text("reset")),
+            StreamBuilder(
+                initialData: 0,
+                stream: counterBlock.countStream,
+                builder: (context, snapshot) {
+                  return Text(
+                    '${snapshot.data}',
+                    style: Theme.of(context).textTheme.headline4,
+                  );
+                }),
           ],
         ),
       ),
