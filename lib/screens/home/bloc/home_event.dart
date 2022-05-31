@@ -11,6 +11,6 @@ class LoadApiEvent extends HomeEvent {
 
 class NoInternetEvent extends HomeEvent {
   @override
-  // TODO: implement props
+
   List<Object?> get props => [];
 }

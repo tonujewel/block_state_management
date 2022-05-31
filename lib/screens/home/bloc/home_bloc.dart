@@ -3,7 +3,6 @@ import 'package:bloc/bloc.dart';
 import 'package:bloc_state_management/services/connectivity_service.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter/foundation.dart';
 
 import '../../../services/boredService.dart';
 
@@ -17,12 +16,12 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   HomeBloc(this._boredService, this._connectivityService)
       : super(HomeLoadingState()) {
     _connectivityService.connectivityStream.stream.listen((event) {
-      print("object event $event");
+     
       if (event == ConnectivityResult.none) {
-        print('no internet');
+      
         add(NoInternetEvent());
       } else {
-        print('yes internet');
+        
         add(LoadApiEvent());
       }
     });
