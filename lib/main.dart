@@ -1,12 +1,11 @@
-import 'package:bloc_state_management/screens/authentication/login/login_screen.dart';
+import 'package:bloc_state_management/resources/api_provider.dart';
 import 'package:bloc_state_management/services/authenticationService.dart';
 import 'package:bloc_state_management/services/connectivity_service.dart';
 import 'package:bloc_state_management/services/todo_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/adapters.dart';
-
-import 'services/boredService.dart';
+import 'screens/welcome/welcome_screen.dart';
 
 void main() async {
   await Hive.initFlutter();
@@ -23,15 +22,15 @@ class MyApp extends StatelessWidget {
       providers: [
         RepositoryProvider(create: (context) => TodoService()),
         RepositoryProvider(create: (context) => AuthenticationService()),
-        RepositoryProvider(create: (context) => BoredService()),
         RepositoryProvider(create: (context) => ConnectivityService()),
-      ],
+        RepositoryProvider(create: (context) => ApiProvider()),
+    ],
       child: MaterialApp(
           title: 'Flutter Demo',
           theme: ThemeData(
             primarySwatch: Colors.blue,
           ),
-          home: LoginScreen()),
+          home: const WelcomeScreen()),
     );
   }
 }

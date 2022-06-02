@@ -1,4 +1,5 @@
 import 'package:bloc_state_management/models/user.dart';
+import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
 class AuthenticationService {
@@ -32,6 +33,7 @@ class AuthenticationService {
       _users.add(User(username, password));
       return UserCredential.success;
     } on Exception catch (e) {
+      debugPrint(e.toString());
       return UserCredential.failure;
     }
   }

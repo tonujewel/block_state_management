@@ -41,8 +41,8 @@ class TodoScreen extends StatelessWidget {
                             ));
 
                     if (result != null) {
-                      BlocProvider.of<TodoBloc>(context)
-                          .add(AddTodoEvent(result));
+                      // ignore: use_build_context_synchronously
+                      BlocProvider.of<TodoBloc>(context).add(AddTodoEvent(result));
                     }
                   },
                 )
