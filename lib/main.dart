@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'screens/welcome/welcome_screen.dart';
+import 'services/image_gallery_service.dart';
 
 void main() async {
   await Hive.initFlutter();
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
         RepositoryProvider(create: (context) => AuthenticationService()),
         RepositoryProvider(create: (context) => ConnectivityService()),
         RepositoryProvider(create: (context) => ApiProvider()),
+        RepositoryProvider(create: (context) => ImageService()),
     ],
       child: MaterialApp(
           title: 'Flutter Demo',

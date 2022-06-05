@@ -15,6 +15,7 @@ class AuthenticationBloc
 
   AuthenticationBloc(this._auth, this._todoService)
       : super(RegisteringServicesState()) {
+        
     on<LoginEvent>((event, emit) async {
       final user =
           await _auth!.authenticateUser(event.username, event.password);

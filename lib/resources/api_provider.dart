@@ -17,8 +17,8 @@ class ApiProvider {
     var headers = {
       'Accept-Version': 'v1',
       'Authorization': 'Client-ID rhwcV9wzd5u6tIf-NNFs1HTNM88VHlJpcEa7qTlgXjM',
-      'Cookie': 'ugid=40da89d52d2f72ca3e63624c9a1f3b2a5506973'
     };
+
     final response = await get(
         Uri.parse('https://api.unsplash.com/photos?page=1'),
         headers: headers);

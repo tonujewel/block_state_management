@@ -10,7 +10,7 @@ class GalleryLoadingState extends GalleryState {
 }
 
 class GalleryLoadedState extends GalleryState {
-  final List<GalleryDm> imageGalleryList;
+  final List<GalleryHiveDm> imageGalleryList;
 
   const GalleryLoadedState(this.imageGalleryList);
   @override
@@ -18,6 +18,14 @@ class GalleryLoadedState extends GalleryState {
 }
 
 class GalleryNoInternetState extends GalleryState {
+  @override
+  List<Object?> get props => [];
+}
+class ImageSavedState extends GalleryState {
+  @override
+  List<Object?> get props => [];
+}
+class ImageSavedNoInternetState extends GalleryState {
   @override
   List<Object?> get props => [];
 }
