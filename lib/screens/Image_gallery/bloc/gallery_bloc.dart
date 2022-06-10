@@ -91,6 +91,7 @@ class GalleryBloc extends Bloc<GalleryEvent, GalleryState> {
 
   bool isExist(GalleryHiveDm data) {
     final result = _imageService.getImageList();
+    // ignore: prefer_is_empty
     return result.length >= 0
         ? result.any((GalleryHiveDm item) => item.id == data.id)
         : false;

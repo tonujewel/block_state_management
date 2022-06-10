@@ -5,9 +5,6 @@ import 'package:bloc_state_management/widget/no_internet_widget.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:share_plus/share_plus.dart';
-
-import '../../services/image_gallery_service.dart';
 import 'bloc/gallery_bloc.dart';
 
 class ImageGalleryScreen extends StatelessWidget {
@@ -21,7 +18,6 @@ class ImageGalleryScreen extends StatelessWidget {
       body: BlocProvider(
         create: (context) => GalleryBloc(
           RepositoryProvider.of<ApiProvider>(context),
-          //  RepositoryProvider.of<ImageService>(context),
         )..add(LoadGalleryDataApiEvent()),
         child: BlocConsumer<GalleryBloc, GalleryState>(
           listener: (context, state) {
@@ -58,7 +54,6 @@ class ImageGalleryScreen extends StatelessWidget {
             }
 
             if (state is GalleryLoadedState) {
-              print("dataa length ${state.imageGalleryList.length}");
               return GridView.builder(
                   padding: const EdgeInsets.all(20),
                   shrinkWrap: true,

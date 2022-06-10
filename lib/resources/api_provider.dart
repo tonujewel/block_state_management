@@ -1,7 +1,10 @@
+import 'dart:convert';
+
 import 'package:bloc_state_management/models/covid_dm.dart';
 import 'package:bloc_state_management/models/gallery_dm.dart';
 import 'package:http/http.dart';
 
+import '../screens/post_request/sign_in_dm.dart';
 
 class ApiProvider {
   final covidUrl = "https://api.covid19api.com/summary";
@@ -11,7 +14,6 @@ class ApiProvider {
     CovidDm covidDm = covidDmFromJson(res.body);
     return covidDm;
   }
-
 
   Future<List<GalleryDm>> getGalleryData() async {
     var headers = {
@@ -25,5 +27,26 @@ class ApiProvider {
 
     List<GalleryDm> galleryDm = galleryDmFromJson(response.body);
     return galleryDm;
+  }
+
+  Future<SignInDm?> doSignIn({required String email, password}) async {
+    var body = {
+      'email_id': email,
+      'password': password,
+      'device_token': '1234567890',
+    };
+    final response = await post(
+        Uri.parse("http://driver.indieat.se/api/driver/driver_login"),
+        body: body);
+
+    print(jsonDecode(response.body));
+
+    SignInDm signInDm = signInDmFromJson(response.body);
+
+    if (response.statusCode == 200) {
+      return signInDm;
+    } else {
+      return null;
+    }
   }
 }

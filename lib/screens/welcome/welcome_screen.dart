@@ -3,6 +3,8 @@ import 'package:bloc_state_management/screens/authentication/login/login_screen.
 import 'package:bloc_state_management/screens/get_api/get_api_screen.dart';
 import 'package:flutter/material.dart';
 
+import '../post_request/post_request_screen.dart';
+
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
 
@@ -38,6 +40,15 @@ class WelcomeScreen extends StatelessWidget {
               context,
               MaterialPageRoute(
                 builder: (context) => const ImageGalleryScreen(),
+              ),
+            ),
+          ),
+          HomeItemContainer(
+            title: "Post request",
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => PostRequestScreen(),
               ),
             ),
           ),
