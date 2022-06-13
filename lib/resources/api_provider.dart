@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:bloc_state_management/models/covid_dm.dart';
+import 'package:bloc_state_management/models/error_dm.dart';
 import 'package:bloc_state_management/models/gallery_dm.dart';
 import 'package:http/http.dart';
 
@@ -29,7 +30,7 @@ class ApiProvider {
     return galleryDm;
   }
 
-  Future<SignInDm?> doSignIn({required String email, password}) async {
+  Future<dynamic> doSignIn({required String email, password}) async {
     var body = {
       'email_id': email,
       'password': password,
@@ -39,12 +40,8 @@ class ApiProvider {
         Uri.parse("http://driver.indieat.se/api/driver/driver_login"),
         body: body);
 
-    print(jsonDecode(response.body));
-
-    SignInDm signInDm = signInDmFromJson(response.body);
-
     if (response.statusCode == 200) {
-      return signInDm;
+      return response.body;
     } else {
       return null;
     }

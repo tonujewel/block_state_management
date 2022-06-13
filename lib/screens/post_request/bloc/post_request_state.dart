@@ -15,11 +15,17 @@ class PostRequestLoadingState extends PostRequestState {
 }
 
 class PostRequestLoginSuccessState extends PostRequestState {
+  final SignInDm signInDm;
+
+  const PostRequestLoginSuccessState(this.signInDm);
   @override
-  List<Object> get props => [];
+  List<Object> get props => [signInDm];
 }
 
 class PostRequestLoginFailedState extends PostRequestState {
+  final String message;
+
+  const PostRequestLoginFailedState(this.message);
   @override
-  List<Object> get props => [];
+  List<Object> get props => [message];
 }
