@@ -55,11 +55,11 @@ class GalleryDm {
 
   factory GalleryDm.fromJson(Map<String?, dynamic> json) => GalleryDm(
         id: json["id"],
-        createdAt: DateTime?.parse(json["created_at"]),
-        updatedAt: DateTime?.parse(json["updated_at"]),
+        createdAt: DateTime.parse(json["created_at"]),
+        updatedAt: DateTime.parse(json["updated_at"]),
         promotedAt: json["promoted_at"] == null
             ? null
-            : DateTime?.parse(json["promoted_at"]),
+            : DateTime.parse(json["promoted_at"]),
         width: json["width"],
         height: json["height"],
         color: json["color"],
@@ -206,7 +206,7 @@ class User {
 
   factory User.fromJson(Map<String?, dynamic> json) => User(
         id: json["id"],
-        updatedAt: DateTime?.parse(json["updated_at"]),
+        updatedAt: DateTime.parse(json["updated_at"]),
         username: json["username"],
         name: json["name"],
         firstName: json["first_name"],

@@ -26,7 +26,8 @@ class MyApp extends StatelessWidget {
         RepositoryProvider(create: (context) => ConnectivityService()),
         RepositoryProvider(create: (context) => ApiProvider()),
         RepositoryProvider(create: (context) => ImageService()),
-    ],
+    
+      ],
       child: MaterialApp(
           title: 'Flutter Demo',
           theme: ThemeData(
